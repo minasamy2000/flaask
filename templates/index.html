@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{%block contant%}
+<a href="{{url_for('create')}}" class="btn btn-info">Create new</a>
+{%for post in post%}
+<div class="card" style="width: 18rem;">
+  <img src="{{url_for('static',filename='/iti/images/'+post.image)}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">title:{{post.title}}</h5>
+      <p class="card-text">body:{{post.body}}</p>
+      <p class="card-text">create at:{{post.created_at}}</p>
+      <p class="card-text">updated at:{{post.updated_at}}</p>
+    <a href="{{url_for('view', id=post.id)}}" class="btn btn-primary">Show</a>
+      <a href="{{post.url_delete}}" class="btn btn-danger">Delete</a>
+      <a href="{{url_for('update', id=post.id)}}" class="btn btn-info">Update</a>
+    </div>
+  </div>
+  {%endfor%}
+  {%endblock%}
